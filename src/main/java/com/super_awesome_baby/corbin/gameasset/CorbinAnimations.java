@@ -7,6 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.animation.types.BasicAttackAnimation;
+import yesman.epicfight.api.collider.Collider;
 import yesman.epicfight.gameasset.Armatures;
 
 
@@ -22,9 +23,11 @@ public class CorbinAnimations {
     public static void build (AnimationManager.AnimationBuilder builder){
         TACHI_WHIRLWIND_SLASH =
                 builder.nextAccessor("biped/combat/tachi_whirlwind_slash", (accessor) ->
-                        (new BasicAttackAnimation(0.1F, 0.45F, 0.75F, 1.2F, null,
-                        Armatures.BIPED.get().toolR, accessor, Armatures.BIPED))
+                        (new BasicAttackAnimation(0.1F, accessor, Armatures.BIPED,
+                                new BasicAttackAnimation.Phase(0.0F, 0.86F, 1.0F, 1.0F, 1.0F, Armatures.BIPED.get().toolR, (Collider)null),
+                                new BasicAttackAnimation.Phase(1.0F, 1.6F, 1.9F, 2.4F, Float.MAX_VALUE, Armatures.BIPED.get().toolR,null)))
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, ((dynamicAnimation, livingEntityPatch, v, v1, v2) -> 1F))
+
 
                 );
     }

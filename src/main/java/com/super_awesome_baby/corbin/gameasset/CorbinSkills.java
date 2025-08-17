@@ -7,6 +7,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
 import yesman.epicfight.skill.Skill;
+import yesman.epicfight.world.item.EpicFightCreativeTabs;
 
 @Mod.EventBusSubscriber(modid = Corbin.MODID, bus= Mod.EventBusSubscriber.Bus.MOD)
 public class CorbinSkills {
@@ -18,6 +19,7 @@ public class CorbinSkills {
 
         SEKIROSKILL = modRegistry.build("sekiro", SekiroSkill::new, SekiroSkill.createSekiroBuilder()
                 .setActivateType(Skill.ActivateType.ONE_SHOT)
+                .setCreativeTab(EpicFightCreativeTabs.ITEMS.get())
         );
     }
     private CorbinSkills() {}
