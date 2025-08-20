@@ -5,10 +5,10 @@ import yesman.epicfight.skill.SkillCategory;
 public enum CorbinSkillCategories implements SkillCategory {
     COMBAT_ARTS(true, true, true);
 
-    boolean shouldSave;
-    boolean shouldSyncronize;
-    boolean modifiable;
-    int id;
+    final boolean shouldSave;
+    final boolean shouldSyncronize;
+    final boolean modifiable;
+    final int id;
 
     CorbinSkillCategories(boolean shouldSave, boolean shouldSyncronizedAllPlayers, boolean modifiable) {
         this.shouldSave = shouldSave;

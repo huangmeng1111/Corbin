@@ -85,6 +85,7 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation fg.deobf('libs:epicfight:20.12.4')
+    implementation fg.deobf('libs:skilltree:20.1.1')
 
     implementation 'org.spongepowered:mixin:0.8.5'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'

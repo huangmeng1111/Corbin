@@ -6,8 +6,8 @@ import yesman.epicfight.skill.SkillSlot;
 public enum CorbinSkillSlots implements SkillSlot {
     COMBAT_ARTS(CorbinSkillCategories.COMBAT_ARTS);
 
-    CorbinSkillCategories category;
-    int id;
+    final CorbinSkillCategories category;
+    final int id;
 
     CorbinSkillSlots(CorbinSkillCategories category) {
         this.category = category;

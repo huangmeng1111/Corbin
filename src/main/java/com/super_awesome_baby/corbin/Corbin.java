@@ -1,6 +1,7 @@
 package com.super_awesome_baby.corbin;
 
 import com.mojang.logging.LogUtils;
+import com.super_awesome_baby.corbin.compat.EpicSkillsCompat;
 import com.super_awesome_baby.corbin.gameasset.CorbinSkillCategories;
 import com.super_awesome_baby.corbin.gameasset.CorbinSkillKey;
 import com.super_awesome_baby.corbin.gameasset.CorbinSkillSlots;
@@ -8,12 +9,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import org.slf4j.Logger;
+import yesman.epicfight.main.EpicFightSharedConstants;
 
 @Mod(Corbin.MOD_ID)
 public class Corbin {
@@ -38,6 +41,10 @@ public class Corbin {
         CorbinSkillSlots.ENUM_MANAGER.registerEnumCls(MOD_ID,CorbinSkillSlots.class);
         //技能类别
         CorbinSkillCategories.ENUM_MANAGER.registerEnumCls(MOD_ID,CorbinSkillCategories.class);
+
+        if(EpicFightSharedConstants.isPhysicalClient() && ModList.get().isLoaded("epicskills")) {
+            EpicSkillsCompat.registerCategorySlotTexture();
+        }
     }
 
     @SubscribeEvent
