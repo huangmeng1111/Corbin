@@ -1,26 +1,22 @@
-package com.super_awesome_baby.corbin.skill.passive;
+package com.super_awesome_baby.corbin.skill.combat_arts;
 
-import com.super_awesome_baby.corbin.gameasset.CorbinAnimations;
+import com.super_awesome_baby.corbin.gameasset.animation.CorbinAnimations;
+import com.super_awesome_baby.corbin.gameasset.CorbinSkillCategories;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.lwjgl.glfw.GLFW;
-import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.network.EpicFightNetworkManager;
 import yesman.epicfight.network.client.CPSkillRequest;
-import yesman.epicfight.skill.SkillBuilder;
-import yesman.epicfight.skill.SkillCategories;
-import yesman.epicfight.skill.SkillContainer;
-import yesman.epicfight.skill.SkillSlot;
-import yesman.epicfight.skill.passive.PassiveSkill;
+import yesman.epicfight.skill.*;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener;
 import yesman.epicfight.world.entity.eventlistener.PlayerEventListener.EventType;
 
 import java.util.UUID;
 
-public class SekiroSkill extends PassiveSkill {
+public class SekiroSkill extends Skill {
     private static final UUID EVENT_UUID = UUID.fromString("a416c93a-42cb-11eb-b378-0242ac170003");
     private boolean wasRightMouseDown;
     private boolean wasLeftMouseDown;
@@ -30,6 +26,10 @@ public class SekiroSkill extends PassiveSkill {
         return (new Builder())
                 .setCategory(SkillCategories.PASSIVE)
                 .setActivateType(ActivateType.ONE_SHOT);
+    }
+
+    public static SkillBuilder<SekiroSkill> createExecutionBuilder() {
+        return new SkillBuilder<SekiroSkill>().setCategory(CorbinSkillCategories.COMBAT_ARTS).setResource(Resource.NONE);
     }
 
     public static class Builder extends SkillBuilder<SekiroSkill> {}
